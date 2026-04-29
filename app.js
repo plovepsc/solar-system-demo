@@ -18,7 +18,7 @@ mongoose.connect(process.env.MONGO_URI, {
     if (err) {
         console.log("error!! " + err)
     } else {
-      //  console.log("MongoDB Connection Successful")
+       console.log("MongoDB Connection Successful")
     }
 })
 
