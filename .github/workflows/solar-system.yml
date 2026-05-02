@@ -32,9 +32,11 @@ jobs:
           run: npm install
     
         - name: Unit Testing
+          id: nodejs-unit-testing-stpe
           run: npm test
         
         - name: Archive Test Results
+          if: failure() && (steps.nodejs-unit-testing-stpe.outcome == 'failure' || steps.nodejs-unit-testing-stpe.outcome == 'success')
           uses: actions/upload-artifact@v4
           with:
             name: test-results
