@@ -13,7 +13,7 @@ jobs:
         name: Unit Testing
         services: 
           mongo-db: 
-            image: webdevloper/mongo-db:non-prod 
+            image: siddharth67/mongo-db:non-prod
             ports: 
               - 27017:27017
             options: >- 
@@ -70,7 +70,7 @@ jobs:
         image: node:18
       services:
         mongo-db:
-          image: webdevloper/mongo-db:non-prod
+          image: siddharth67/mongo-db:non-prod
           options:
             --name mongo
       env:
