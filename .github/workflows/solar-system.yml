@@ -206,7 +206,9 @@ jobs:
 
       - name: Create MongoDB secret
         run: |
-          kubectl -n ${{ vars.NAMESPACE }} create secret generic mongo-db-secret --from-literal=MONGO_URI=${{ env.MONGO_URI }} --dry-run=client -o yaml | kubectl apply -f -
+          kubectl -n ${{ vars.NAMESPACE }} create secret generic mongo-db-secret \
+          --from-literal=MONGO_URI="${{ env.MONGO_URI }}" \
+          --dry-run=client -o yaml | kubectl apply -f -
 
       - name: Deploy to Dev env
         run: |
