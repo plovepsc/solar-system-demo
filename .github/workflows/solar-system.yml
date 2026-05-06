@@ -219,7 +219,7 @@ jobs:
       - name: Set app Ingress Host URl
         id: set-ingress-host-address
         run: |
-          echo "APP_INGRESS_HOST=$(kubectl -n ${{ vars.NAMESPACE }} get ingress -o jsonpath='{.items[*].spec.rules[*].host}')" >> $GITHUB_ENV
+          echo "APP_INGRESS_HOST=$(kubectl -n ${{ vars.NAMESPACE }} get ingress -o jsonpath='{.items[*].spec.rules[*].host}')" >> $GITHUB_OUTPUT
     
 
     intergration-testing:
@@ -233,5 +233,5 @@ jobs:
         run: |
           echo $URI
           echo "====================================================="
-          curl https://$URI/live -s -k | jq -r .status |grep live
+          curl http://$URI/live -s -k | jq -r .status |grep live
       
