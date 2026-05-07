@@ -225,7 +225,7 @@ jobs:
           echo "APP_INGRESS_HOST=$(kubectl -n ${{ vars.NAMESPACE }} get ingress -o jsonpath='{.items[*].spec.rules[*].host}')" >> $GITHUB_OUTPUT
     
 
-    intergration-testing:
+    dev-intergration-testing:
       name: Dev Intergration Testing
       needs: dev-deploy
       runs-on: ubuntu-latest
@@ -240,9 +240,9 @@ jobs:
 
 
     prod-deploy:
-      needs: docker
+      needs: dev-intergration-testing
       environment:
-        name: development
+        name: Prod
         url: https://${{ steps.set-ingress-host-address.outputs.APP_INGRESS_HOST }}
       outputs:
         APP_INGRESS_URL: ${{ steps.set-ingress-host-address.outputs.APP_INGRESS_HOST }}
