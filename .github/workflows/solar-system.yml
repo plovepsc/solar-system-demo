@@ -318,5 +318,5 @@ jobs:
           URI: ${{ needs.prod-deploy.outputs.APP_INGRESS_URL }}
         run: |
           echo $URI
-          echo "=====================================================hi"
+          echo "====================================================="
           # curl https://$URI/live -s -k | jq -r .status |grep live
